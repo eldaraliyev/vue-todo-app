@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .main {
   position: relative;
-  padding: 20px;
+  //padding: 20px 0;
   margin: 30px auto;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,7 @@ export default {
     &__stats {
       display: flex;
       flex-direction: row;
+      width: 100%;
     }
   }
   .input {

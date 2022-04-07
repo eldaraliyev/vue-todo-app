@@ -1,5 +1,6 @@
 <template>
- <h2>Your To-Do List</h2>
+ <h1>Your To-Do List</h1>
+
   <!-- <div class="menu">
     <div class="menu__button" @click="toggleMenu">
 

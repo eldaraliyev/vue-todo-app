@@ -37,7 +37,7 @@ body {
   max-width: 30%;
   min-width: 320px;
   margin: 30px auto 0;
-  background: #e5e7eb;
+  background: #EDEBD7;
   @media screen and (max-width: 768px) {
     //min-width: 100vw;
   }

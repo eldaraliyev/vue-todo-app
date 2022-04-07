@@ -6,11 +6,11 @@ const tasksCount = ref(0)
 
 const completed = ref(0)
 
-const handler = JSON.parse(localStorage.getItem('tasks'))
+let handler = JSON.parse(localStorage.getItem('tasks'))
 
 const updateStats = () => {
-  tasksCount.value = handler.filter(item => item.completed == false).length
-  completed.value = handler.filter(item => item.completed == true).length
+  tasksCount.value = tasks.value.filter(item => item.completed == false).length
+  completed.value = tasks.value.filter(item => item.completed == true).length
 }
 
 const updateStorage = () => {
@@ -19,7 +19,8 @@ const updateStorage = () => {
 
 const updateTaskList = () => {
   if (!handler) {
-    return
+    handler = []
+    updateStats()
   } else {
     tasks.value = handler
     updateStats()
@@ -42,4 +43,17 @@ const completeTask = (task) => {
   updateStats()
 }
 
-export { tasks, tasksCount, completed, updateTaskList, addTask, completeTask }
+const removeTask = (task) => {
+  console.log(task.id);
+  tasks.value.filter(item => item.id != task.id)
+}
+
+export {
+  tasks,
+  tasksCount,
+  completed,
+  updateTaskList,
+  addTask,
+  completeTask,
+  removeTask
+}

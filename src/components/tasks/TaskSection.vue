@@ -20,4 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tasks {
+  margin-bottom: 100px;
+}
 </style>

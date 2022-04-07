@@ -3,32 +3,46 @@
     <p class="task__description" :class="{ completed: task.completed }">
       {{ task.description }}
     </p>
-    <button @click="completeTask(task)">Test</button>
-    <p>{{ task.id }}</p>
-    <p v-if="task.completed">Comleted</p>
-    <!-- <p>{{task.category}}</p> -->
+    <el-button
+      v-if="!task.completed"
+      @click="completeTask(task)"
+      type="success"
+      :icon="Check"
+      circle
+    />
+    <el-button
+      v-else
+      @click="removeTask(task)"
+      type="danger"
+      :icon="Delete"
+      circle
+    />
   </div>
 </template>
 
 <script>
-import { completeTask } from "../../global-data";
-
+import { completeTask, removeTask } from "../../global-data";
+import { Check, Delete } from "@element-plus/icons-vue";
 export default {
   props: ["task"],
   setup() {
-    return {completeTask}
+    return { completeTask, removeTask, Check, Delete };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .task {
-  padding: 12px;
-  //box-shadow: 0 2px 8px rgba($color: #000000, $alpha: 0.26);
+  padding: 12px 16px;
+  box-shadow: 0 0 4px rgba($color: #000000, $alpha: 0.26);
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   transition: transform 0.2s ease;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #fff;
   /* 
   &:hover {
     transform: translate(1px, 1px);
