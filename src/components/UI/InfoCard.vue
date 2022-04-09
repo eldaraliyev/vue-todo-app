@@ -9,38 +9,45 @@
 
 <script>
 export default {
-  props: {
+
+props: {
     title: String,
     count: Number,
     cardStyle: String,
   },
-  setup() {
+
+setup() {
     return {};
   },
 };
 </script>
 
 <style lang="scss" scoped>
+
 .card {
-  padding: 10px 20px;
-  width: 100px;
+  padding: 10px;
+  width: 100%;
   border-radius: 10px;
-  margin-right: 10px;
   &__content {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    gap: 10px;
+    justify-content: center;
     align-items: center;
+  
     .title,
     .count {
       font-size: 22px;
       font-weight: 700;
     }
+  
   }
+
 }
 .pending {
   background: var(--el-color-warning-light-3);
 }
+
 .done {
   background: var(--el-color-success-light-3);
 }

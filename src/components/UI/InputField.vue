@@ -8,28 +8,18 @@
       placeholder="Enter task here..."
       maxlength="60"
     />
-    <p class="input__hint">Click Enter to create</p>
+    <button class="input__add">Add</button>
   </div>
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { addTask } from "../../global-data";
 import { ElMessage } from "element-plus";
 
 export default {
   setup() {
-    const moment = require("moment");
-
     const description = ref("");
-
-    const id = computed(() => {
-      return moment().format("DD.MM.YY HH:mm:ss");
-    });
-
-    const time = computed(() => {
-      return moment().format("DD.MM.YY HH:mm:ss");
-    });
 
     const createTask = () => {
       if (description.value) {
@@ -55,7 +45,7 @@ export default {
         type: "warning",
       });
     };
-    return { description, id, time, createTask, successMsg, notifyMsg };
+    return { description, createTask, successMsg, notifyMsg };
   },
 };
 </script>
@@ -66,26 +56,31 @@ export default {
   display: flex;
   flex-direction: column;
   &__field {
-    width: 320px;
     height: 100%;
     background: #ffffff;
-    //box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-    //border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.26);
     border: none;
     padding: 12px;
     font-size: 14px;
     background: none;
     font-family: inherit;
-
+    padding-right: 50px;
     &:focus {
       outline: none;
     }
   }
-  &__hint {
-    font-weight: 300;
-    font-size: 12px;
-    margin: 12px 0px 0px 12px;
-    color: #ccc;
+  &__add {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    padding: 0 12px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    transition: all .3s ease;
+    &:hover {
+      background: lighten($color: #000000, $amount: 90);
+    }
   }
 }
 </style>

@@ -43,14 +43,17 @@ export default {
     &__stats {
       display: flex;
       flex-direction: row;
-      width: 100%;
+      gap: 8px;
     }
   }
   .input {
     position: fixed;
     bottom: 30px;
-
+    border-radius: 5px;
     background: #fff;
+    max-width: 900px;
+  width: 40%;
+  min-width: 320px;
   }
 }
 </style>

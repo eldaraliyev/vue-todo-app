@@ -43,17 +43,11 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   background: #fff;
-  /* 
-  &:hover {
-    transform: translate(1px, 1px);
-  } */
-  /* &__checkbox {
-  } */
   &__description {
     font-size: 16px;
     line-height: 16px;
     font-weight: 400;
-    word-wrap: break-word;
+   word-break: break-word;
   }
 }
 .completed {

@@ -1,18 +1,17 @@
 <template>
   <div>
-    <app-header></app-header>
+    <h1>Your To-Do List</h1>
     <to-do></to-do>
   </div>
 </template>
 
 <script>
 import Todo from "./views/Todo.vue";
-import Header from "./components/layout/Header.vue";
 import { updateTaskList } from "./global-data";
 import { onBeforeMount } from "vue";
 
 export default {
-  components: { "to-do": Todo, "app-header": Header },
+  components: { "to-do": Todo},
   setup() {
     onBeforeMount(() => {
       updateTaskList();
@@ -30,16 +29,14 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
 }
 
 body {
-  font-family: "Roboto Slab", serif;
-  max-width: 30%;
+  max-width: 900px;
+  width: 40%;
   min-width: 320px;
   margin: 30px auto 0;
   background: #EDEBD7;
-  @media screen and (max-width: 768px) {
-    //min-width: 100vw;
-  }
 }
 </style>
