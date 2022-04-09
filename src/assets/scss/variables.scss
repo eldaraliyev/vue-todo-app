@@ -6,6 +6,7 @@ $input-el-color: $task-card-bg;
 $input-add-btn: $task-completed-text;
 $info-card-pending: var(--el-color-warning-light-3);
 $info-card-done: var(--el-color-success-light-3);
+$hide-el-color: linear-gradient( 360deg, #edebd7 67.64%, rgba(237, 235, 215, 0.4) 79.48%, rgba(237, 235, 215, 0.2) 89.9%, rgba(237, 235, 215, 0) 100%);
 //Box-shadow
 $base-box-shadow: 0 0 4px rgba($color: #000000, $alpha: 0.26);
 //Transition

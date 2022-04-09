@@ -41,8 +41,8 @@ export default {
   margin: 10px 0;
   width: 100%;
   background: $task-card-bg;
-  animation: task 0.3s ease;
   transition: $transition;
+  animation: task 0.3s ease;
 
   &:hover {
     background: $input-add-btn;

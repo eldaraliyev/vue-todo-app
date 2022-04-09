@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <div class="hide"></div>
     <div class="tasks">
       <div class="tasks__stats">
         <info-card
@@ -34,19 +35,27 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  @include flex (column,center);
+  @include flex(column, center);
   position: relative;
   margin: 30px auto;
   border-radius: 10px;
 
   .tasks {
     &__stats {
-      @include flex (row);
+      @include flex(row);
       gap: 8px;
     }
   }
-
+  .hide {
+    width: 100vw;
+    height: 150px;
+    background: $hide-el-color;
+    position: fixed;
+    left: 0;
+    bottom: 0; z-index: 1;
+  }
   .input {
+    z-index: 2;
     position: fixed;
     bottom: 30px;
     border-radius: 5px;
