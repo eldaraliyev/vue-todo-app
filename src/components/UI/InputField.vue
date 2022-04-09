@@ -8,7 +8,7 @@
       placeholder="Enter task here..."
       maxlength="60"
     />
-    <button class="input__add">Add</button>
+    <button class="input__add" @click="createTask">Add</button>
   </div>
 </template>
 
@@ -52,23 +52,22 @@ export default {
 
 <style lang="scss" scoped>
 .input {
+  @include body-width;
+  @include flex(column);
   height: 50px;
-  display: flex;
-  flex-direction: column;
   &__field {
+    border-radius: 5px;
     height: 100%;
-    background: #ffffff;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.26);
+    box-shadow: $base-box-shadow;
     border: none;
-    padding: 12px;
+    padding: 12px 50px 12px 12px;
     font-size: 14px;
-    background: none;
-    font-family: inherit;
-    padding-right: 50px;
+
     &:focus {
       outline: none;
     }
   }
+
   &__add {
     position: absolute;
     right: 0;
@@ -77,9 +76,9 @@ export default {
     border: none;
     cursor: pointer;
     background: none;
-    transition: all .3s ease;
+    transition: $transition;
     &:hover {
-      background: lighten($color: #000000, $amount: 90);
+      background: $input-add-btn;
     }
   }
 }

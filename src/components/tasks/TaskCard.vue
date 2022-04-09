@@ -33,25 +33,44 @@ export default {
 
 <style lang="scss" scoped>
 .task {
+  @include flex(row, space-between);
+  align-items: center;
   padding: 12px 16px;
-  box-shadow: 0 0 4px rgba($color: #000000, $alpha: 0.26);
+  box-shadow: $base-box-shadow;
   border-radius: 5px;
   margin: 10px 0;
-  transition: transform 0.2s ease;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background: #fff;
+  background: $task-card-bg;
+  animation: task 0.3s ease;
+  transition: $transition;
+
+  &:hover {
+    background: $input-add-btn;
+  }
+
   &__description {
     font-size: 16px;
     line-height: 16px;
     font-weight: 400;
-   word-break: break-word;
+    word-break: break-word;
+    padding-right: 20px;
   }
 }
+
 .completed {
   text-decoration: line-through;
   color: #aaa;
+  
+  @keyframes task {
+    from {
+      opacity: 0.5;
+      transform: scale(0.9);
+    }
+    
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 </style>

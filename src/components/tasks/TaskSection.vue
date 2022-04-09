@@ -13,8 +13,7 @@ import { tasks } from "../../global-data";
 export default {
   components: { TaskCard },
   setup() {
-    return { tasks};
-
+    return { tasks };
   },
 };
 </script>
