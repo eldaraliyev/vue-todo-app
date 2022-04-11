@@ -45,7 +45,18 @@ const completeTask = (task) => {
 
 const removeTask = (task) => {
   console.log(task.id);
-  tasks.value.filter(item => item.id != task.id)
+  // tasks.value.filter(item => {
+  //   return item.id !== task.id
+  // })
+  const target = tasks.value.findIndex(item => item.id == task.id)
+  const remove = confirm("Are you sure?")
+  if (remove) {
+    tasks.value.splice(target, 1)
+  } else {
+    return
+  }
+  updateStorage()
+  updateStats()
 }
 
 export {

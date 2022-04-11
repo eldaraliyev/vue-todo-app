@@ -22,7 +22,7 @@ export default {
     const description = ref("");
 
     const createTask = () => {
-      if (description.value) {
+      if (description.value.trim()) {
         addTask(description.value);
         successMsg();
         description.value = "";
