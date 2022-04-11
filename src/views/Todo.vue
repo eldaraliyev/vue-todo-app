@@ -48,6 +48,7 @@ export default {
   }
   .hide {
     width: 100vw;
+    min-width: 320px;
     height: 150px;
     background: $hide-el-color;
     position: fixed;
