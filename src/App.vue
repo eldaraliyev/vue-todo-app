@@ -1,7 +1,12 @@
 <template>
-  <div>
-    <h1>Your To-Do List</h1>
-    <to-do></to-do>
+  <div class="main">
+    <div class="main__title">
+      <h2>To Do List</h2>
+    </div>
+    <div class="main__body">
+      <to-do></to-do>
+      <div class="input-wrapper"></div>
+    </div>
   </div>
 </template>
 
@@ -11,7 +16,8 @@ import { updateTaskList } from "./global-data";
 import { onBeforeMount } from "vue";
 
 export default {
-  components: { "to-do": Todo},
+  components: { "to-do": Todo },
+  title: "test",
   setup() {
     onBeforeMount(() => {
       updateTaskList();
@@ -21,8 +27,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;500;700;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 body {
   @include body-width;
   margin: 30px auto 0;

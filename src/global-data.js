@@ -2,15 +2,18 @@ import { ref } from 'vue'
 
 const tasks = ref([])
 
-const tasksCount = ref(0)
+const pending = ref(0)
 
 const completed = ref(0)
+
+const total = ref(0)
 
 let handler = JSON.parse(localStorage.getItem('tasks'))
 
 const updateStats = () => {
-  tasksCount.value = tasks.value.filter(item => item.completed == false).length
+  pending.value = tasks.value.filter(item => item.completed == false).length
   completed.value = tasks.value.filter(item => item.completed == true).length
+  total.value = tasks.value.length
 }
 
 const updateStorage = () => {
@@ -18,13 +21,8 @@ const updateStorage = () => {
 }
 
 const updateTaskList = () => {
-  if (!handler) {
-    handler = []
-    updateStats()
-  } else {
-    tasks.value = handler
-    updateStats()
-  }
+  handler ? tasks.value = handler : handler = []
+  updateStats()
 }
 
 const addTask = (newData) => {
@@ -61,8 +59,9 @@ const removeTask = (task) => {
 
 export {
   tasks,
-  tasksCount,
+  pending,
   completed,
+  total,
   updateTaskList,
   addTask,
   completeTask,

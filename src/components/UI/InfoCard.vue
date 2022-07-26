@@ -25,14 +25,17 @@ export default {
 .card {
   padding: 10px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 8px;
 
   &__content {
     @include flex(row, center);
-    gap: 10px;
+    gap: 0.5em;
     align-items: center;
 
-    .title,
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+    }
     .count {
       font-size: 22px;
       font-weight: 700;
@@ -46,4 +49,8 @@ export default {
 .done {
   background: $info-card-done;
 }
+ .total {
+  background: $info-card-total;
+ }
+
 </style>

@@ -4,11 +4,12 @@
     <div class="tasks">
       <div class="tasks__stats">
         <info-card
-          title="⏳"
-          :count="tasksCount"
+          title="Pending: "
+          :count="pending"
           cardStyle="pending"
         ></info-card>
-        <info-card title="✅" :count="completed" cardStyle="done"></info-card>
+        <info-card title="Done: " :count="completed" cardStyle="done"></info-card>
+        <info-card title="Total: " :count="total" cardStyle="total"></info-card>
       </div>
       <task-section></task-section>
     </div>
@@ -22,13 +23,13 @@
 import InputField from "../components/UI/InputField.vue";
 import TaskSection from "../components/tasks/TaskSection.vue";
 import InfoCard from "../components/UI/InfoCard.vue";
-import { tasksCount, completed } from "../global-data";
+import { pending, completed, total } from "../global-data";
 
 export default {
   components: { InputField, TaskSection, InfoCard },
   name: "MainPage",
   setup() {
-    return { tasksCount, completed };
+    return { pending, completed, total};
   },
 };
 </script>

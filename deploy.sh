@@ -12,7 +12,7 @@ cd dist
 # commit all changes
 
 git init
-git add -A
+git add dist
 git commit -m 'adding dist subtree'
 
 # push all changes on deployment subtree 
