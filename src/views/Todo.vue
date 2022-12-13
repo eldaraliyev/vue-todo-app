@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <div class="hide"></div>
     <div class="tasks">
       <div class="tasks__stats">
         <info-card
@@ -8,7 +7,11 @@
           :count="pending"
           cardStyle="pending"
         ></info-card>
-        <info-card title="Done: " :count="completed" cardStyle="done"></info-card>
+        <info-card
+          title="Done: "
+          :count="completed"
+          cardStyle="done"
+        ></info-card>
         <info-card title="Total: " :count="total" cardStyle="total"></info-card>
       </div>
       <task-section></task-section>
@@ -21,15 +24,24 @@
 
 <script>
 import InputField from "../components/UI/InputField.vue";
-import TaskSection from "../components/tasks/TaskSection.vue";
+import TaskSection from "../components/App/TodoSection.vue";
 import InfoCard from "../components/UI/InfoCard.vue";
-import { pending, completed, total } from "../global-data";
+import { useTaskStore } from "../stores/tasks";
+import { computed } from "vue";
+// import { pending, completed, total } from "../global-data";
 
 export default {
   components: { InputField, TaskSection, InfoCard },
   name: "MainPage",
   setup() {
-    return { pending, completed, total};
+    const store = useTaskStore();
+    const pending = computed(() => store.pendingTasks);
+    const completed = computed(() => store.completedTasks);
+    const total = computed(() => store.totalTasks);
+
+    store.updateTaskList();
+
+    return { pending, completed, total };
   },
 };
 </script>
@@ -54,7 +66,8 @@ export default {
     background: $hide-el-color;
     position: fixed;
     left: 0;
-    bottom: 0; z-index: 1;
+    bottom: 0;
+    z-index: 1;
   }
   .input {
     z-index: 2;

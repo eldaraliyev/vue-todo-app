@@ -1,7 +1,7 @@
 <template>
   <div class="card" :class="cardStyle">
-    <div class="card__content">
-      <p class="title">{{ title }}</p>
+    <div class="card__content ">
+      <p class="title ">{{ title }}</p>
       <p class="count">{{ count }}</p>
     </div>
   </div>
@@ -23,34 +23,33 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  padding: 10px;
+  padding: 0.5rem;
   width: 100%;
-  border-radius: 8px;
-
+  border-radius: 0.5rem;
+  color: $font-main;
   &__content {
     @include flex(row, center);
-    gap: 0.5em;
+    gap: 0.5rem;
     align-items: center;
 
     .title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
     }
     .count {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
     }
   }
+  &.pending {
+    background-color: var(--bg-infocard-pending);
+  }
+  &.done {
+    background-color: var(--bg-infocard-done);
+  }
+  &.total {
+    background-color: var(--bg-infocard-total);
+  }
 }
-.pending {
-  background: $info-card-pending;
-}
-
-.done {
-  background: $info-card-done;
-}
- .total {
-  background: $info-card-total;
- }
 
 </style>

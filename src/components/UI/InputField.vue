@@ -5,7 +5,7 @@
       type="text"
       v-model="description"
       @keyup.enter="createTask"
-      placeholder="Enter task here..."
+      placeholder="Add a task"
       maxlength="60"
     />
     <button class="input__add" @click="createTask">Add</button>
@@ -14,16 +14,17 @@
 
 <script>
 import { ref } from "vue";
-import { addTask } from "../../global-data";
+// import { addTask } from "../../global-data";
 import { ElMessage } from "element-plus";
-
+import { useTaskStore } from "../../stores/tasks";
 export default {
   setup() {
     const description = ref("");
+    const store = useTaskStore();
 
     const createTask = () => {
       if (description.value.trim()) {
-        addTask(description.value);
+        store.createTask(description.value);
         successMsg();
         description.value = "";
       } else {
@@ -34,14 +35,14 @@ export default {
     const successMsg = () => {
       ElMessage({
         showClose: true,
-        message: "New To-Do item has been created",
+        message: "Success! Created new to-do item",
         type: "success",
       });
     };
     const notifyMsg = () => {
       ElMessage({
         showClose: true,
-        message: "Please enter something to input field",
+        message: "You must enter something to create new to-do item",
         type: "warning",
       });
     };
@@ -56,29 +57,42 @@ export default {
   @include flex(column);
   height: 50px;
   &__field {
-    border-radius: 5px;
+    border-radius: 8px;
     height: 100%;
     box-shadow: $base-box-shadow;
     border: none;
-    padding: 12px 50px 12px 12px;
+    padding: 1rem 3.125rem 1rem 1rem;
     font-size: 14px;
-
+    background-color: var(--bg-color-input);
+    color: var(--text-color);
     &:focus {
       outline: none;
+      &::placeholder {
+        opacity: 0.5;
+        transition: $transition;
+      }
     }
+    &::placeholder {
+        opacity: 1;
+        color: var(--text-color);
+        transition: $transition;
+      }
   }
-
+  
   &__add {
+    border-radius: inherit;
     position: absolute;
     right: 0;
     height: 100%;
-    padding: 0 12px;
+    padding: 0 1rem;
     border: none;
     cursor: pointer;
     background: none;
     transition: $transition;
+    font-weight: 700;
+    color: var(--text-color);
     &:hover {
-      background: $input-add-btn;
+      background: var(--bg-input-add-btn);
     }
   }
 }

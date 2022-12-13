@@ -1,10 +1,19 @@
-@import 'mixins.scss';
-@import 'variables.scss';
+@import "_mixins";
+@import "_variables";
+
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  transition: $transition;
+  @include body-width;
+  margin: 1rem auto 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
