@@ -32,29 +32,28 @@
         ></el-button>
       </div>
     </div>
-    
-      <div v-if="isInfoOpened" class="card__additional">
-        <table class="card__additional__info">
-          <tbody>
-            <tr>
-              <th>Created At:</th>
-              <td>{{ task.createdAt }}</td>
-            </tr>
-            <tr>
-              <th v-if="task.reopened">Reopened At:</th>
-              <td>{{ task.reopenedAt }}</td>
-            </tr>
-            <tr>
-              <th>Updated At:</th>
-              <td>{{ task.updatedAt }}</td>
-            </tr>
-          </tbody>
-        </table>
-        <el-button type="danger" text @click="isDialogActive = true"
-          >Delete Task</el-button
-        >
-      </div>
-    
+
+    <div v-if="isInfoOpened" class="card__additional">
+      <table class="card__additional__info">
+        <tbody>
+          <tr>
+            <th>Created:</th>
+            <td>{{ task.createdAt }}</td>
+          </tr>
+          <tr>
+            <th v-if="task.reopened">Reopened:</th>
+            <td>{{ task.reopenedAt }}</td>
+          </tr>
+          <tr>
+            <th>Completed:</th>
+            <td>{{ task.updatedAt }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <el-button type="danger" text  @click="isDialogActive = true"
+        >Delete Task</el-button
+      >
+    </div>
   </div>
 
   <el-dialog v-model="isDialogActive" title="Delete Todo" width="320px" center>
@@ -78,24 +77,25 @@ import { ref } from "vue";
 export default {
   props: ["task"],
   setup() {
-    const store = useTaskStore();
+    const tasksStore = useTaskStore();
     const isDialogActive = ref(false);
-    const isInfoOpened = ref(false)
-    
+    const isInfoOpened = ref(false);
+
     const removeTask = (task) => {
-      store.removeTask(task);
+      tasksStore.removeTask(task);
       isDialogActive.value = false;
       ElMessage({
         showClose: true,
         message: "Done! To-do item has benn deleted",
         type: "success",
       });
+      isInfoOpened.value = false;
     };
     return {
       isDialogActive,
       isInfoOpened,
-      completeTask: store.completeTask,
-      uncompleteTask: store.uncompleteTask,
+      completeTask: tasksStore.completeTask,
+      uncompleteTask: tasksStore.uncompleteTask,
       removeTask,
       Check,
       Delete,
@@ -120,6 +120,9 @@ export default {
   background-color: var(--bg-color-todo-card);
   color: var(--text-color);
 
+  &:hover{
+    background-color: var(--bg-color-todo-card-hover);
+  }
   &__task {
     display: grid;
     grid-template-columns: 2rem auto 2rem;
@@ -146,8 +149,10 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 1rem;
     &__info {
+      margin-bottom: 1rem;
       width: 100%;
       & th {
         text-align: left;
@@ -175,5 +180,4 @@ export default {
     }
   }
 }
-
 </style>

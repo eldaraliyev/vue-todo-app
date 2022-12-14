@@ -1,11 +1,6 @@
-@mixin body-width {
-  max-width: 900px;
-  width: 40%;
-  min-width: 320px;
-}
-
-@mixin flex ($direction, $justify: left) {
+@mixin flex ($direction, $justify: left, $align: none) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
+  align-items: $align;
 }

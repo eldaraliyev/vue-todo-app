@@ -38,7 +38,7 @@ export const useTaskStore = defineStore('tasks', () => {
   function uncompleteTask(task) {
     task.completed = !task.completed
     task.reopened = true
-    task.reopenedAt = new Date().toLocaleString() 
+    task.reopenedAt = new Date().toLocaleString()
     updateStorage()
   }
 

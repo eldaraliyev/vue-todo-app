@@ -26,7 +26,7 @@ export default {
   padding: 0.5rem;
   width: 100%;
   border-radius: 0.5rem;
-  color: $font-main;
+  color: var(--text-infocard);
   &__content {
     @include flex(row, center);
     gap: 0.5rem;
@@ -34,10 +34,10 @@ export default {
 
     .title {
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 500;
     }
     .count {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
     }
   }

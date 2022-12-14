@@ -10,65 +10,10 @@ $slate-700: #334155;
 $slate-800: #1e293b;
 $slate-900: #0f172a;
 
-$red-400: #ee654d;
 $yellow-400: #efd15b;
 $green-400: #4ade80;
 $blue-400: #60a5fa;
 
-:root {
-  --bg-color: #{$slate-200};   
-  --bg-color-todo-card: #{$slate-50};
-  --bg-color-input: #{$slate-100};
-  --bg-input-add-btn: #{$slate-200};
-  --bg-infocard-pending: #{$red-400} ;
-  --bg-infocard-done: #{$yellow-400};
-  --bg-infocard-total: #{$blue-400};
-
-  --text-color: #{$slate-900};
-}
-[data-theme='dark'] {
-  --bg-color: #{$slate-900};
-  --bg-color-todo-card: #{$slate-700};
-  --bg-color-input: #{$slate-600};
-  --bg-input-add-btn: #{$slate-800};
-  --bg-infocard-pending: #{$red-400} ;
-  --bg-infocard-done: #{$yellow-400};
-  --bg-infocard-total: #{$blue-400};
-
-  --text-color: #{$slate-200};
-}
-
-$bg-todo-card: $slate-50;
-$bg-todo-card-dark: $slate-700;
-
-$bg-input: $slate-100;
-$bg-input-dark: $slate-600;
-
-$font-main: $slate-900;
-$font-main-dark: $slate-200;
-
 $box-shadow: 0 0 3px rgba($color: $slate-900,$alpha: 0.26,);
-
-//
-$task-card-bg: #fff;
-$task-completed-text: #eee;
-$input-el-color: $task-card-bg;
-$input-add-btn: $task-completed-text;
-$info-card-pending: var(--el-color-danger-light-7);
-$info-card-done: var(--el-color-success-light-7);
-$info-card-total: var(--el-color-warning-light-7);
-$hide-el-color: linear-gradient(
-  360deg,
-  #edebd7 67.64%,
-  rgba(237, 235, 215, 0.4) 79.48%,
-  rgba(237, 235, 215, 0.2) 89.9%,
-  rgba(237, 235, 215, 0) 100%
-);
-//Box-shadow
-$base-box-shadow: 0 0 3px
-  rgba(
-    $color: #000000,
-    $alpha: 0.26,
-  );
 //Transition
 $transition: all 200ms ease;

@@ -3,28 +3,36 @@
     <input
       class="input__field"
       type="text"
-      v-model="description"
+      v-model.trim="description"
       @keyup.enter="createTask"
       placeholder="Add a task"
       maxlength="60"
     />
-    <button class="input__add" @click="createTask">Add</button>
+    <button
+      :disabled="isEmptyInputField"
+      class="input__add"
+      @click="createTask"
+    >
+      Add
+    </button>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 // import { addTask } from "../../global-data";
 import { ElMessage } from "element-plus";
 import { useTaskStore } from "../../stores/tasks";
 export default {
   setup() {
     const description = ref("");
-    const store = useTaskStore();
+    const tasksStore = useTaskStore();
+
+    const isEmptyInputField = computed(() => description.value === "");
 
     const createTask = () => {
       if (description.value.trim()) {
-        store.createTask(description.value);
+        tasksStore.createTask(description.value);
         successMsg();
         description.value = "";
       } else {
@@ -46,20 +54,25 @@ export default {
         type: "warning",
       });
     };
-    return { description, createTask, successMsg, notifyMsg };
+    return {
+      description,
+      isEmptyInputField,
+      createTask,
+      successMsg,
+      notifyMsg,
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .input {
-  @include body-width;
   @include flex(column);
-  height: 50px;
+  width: clamp(320px, 40%, 900px);
   &__field {
-    border-radius: 8px;
+    border-radius: .5rem;
     height: 100%;
-    box-shadow: $base-box-shadow;
+    box-shadow: $box-shadow;
     border: none;
     padding: 1rem 3.125rem 1rem 1rem;
     font-size: 14px;
@@ -73,12 +86,12 @@ export default {
       }
     }
     &::placeholder {
-        opacity: 1;
-        color: var(--text-color);
-        transition: $transition;
-      }
+      opacity: 1;
+      color: var(--text-color);
+      transition: $transition;
+    }
   }
-  
+
   &__add {
     border-radius: inherit;
     position: absolute;
@@ -91,6 +104,13 @@ export default {
     transition: $transition;
     font-weight: 700;
     color: var(--text-color);
+    &:disabled {
+      color: var(--bg-input-add-btn-disabled);
+    }
+    &:hover:disabled {
+      background: none;
+      cursor: auto;
+    }
     &:hover {
       background: var(--bg-input-add-btn);
     }

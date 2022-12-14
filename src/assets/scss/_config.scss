@@ -1,0 +1,47 @@
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap");
+
+:root {
+  --bg-color: #{$slate-200};   
+  --bg-color-todo-card: #{$slate-50};
+  --bg-color-todo-card-hover: #{$slate-100};
+  --bg-color-input: #{$slate-100};
+  --bg-input-add-btn: #{$slate-200};
+  --bg-input-add-btn-disabled: #{$slate-400};
+  --bg-infocard-pending: #{$yellow-400} ;
+  --bg-infocard-done: #{$green-400};
+  --bg-infocard-total: #{$blue-400};
+
+  --text-color: #{$slate-900};
+  --text-infocard: #{$slate-900};
+}
+[data-theme='dark'] {
+  --bg-color: #{$slate-900};
+  --bg-color-todo-card: #{$slate-700};
+  --bg-color-todo-card-hover: #{$slate-800};
+  --bg-color-input: #{$slate-600};
+  --bg-input-add-btn: #{$slate-800};
+  --bg-input-add-btn-disabled: #{$slate-500};
+  --bg-infocard-pending: #{$yellow-400} ;
+  --bg-infocard-done: #{$green-400};
+  --bg-infocard-total: #{$blue-400};
+
+  --text-color: #{$slate-200};
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  transition: $transition;
+  width: clamp(320px, 40%, 900px);
+  margin: 1rem auto 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}

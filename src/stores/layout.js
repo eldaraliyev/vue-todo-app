@@ -9,6 +9,9 @@ export const useLayoutStore = defineStore('layout', () => {
 
   function setDocumentTheme(value) {
     document.documentElement.setAttribute('data-theme', value)
+    value === 'dark'
+      ? document.documentElement.classList.add(value)
+      : document.documentElement.classList.remove(...document.documentElement.classList)
   }
 
   function setLs(value) {
